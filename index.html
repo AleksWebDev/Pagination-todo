@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <header>
+        <div class="wrapper">
+            <div class="header__container">
+                <a class="logo" href="#">TODO</a>
+            </div>  
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="wrapper">
+            <div class="main__header">
+                <ul class="tabs">
+                    <li class="tabs__item" value="all">All</li>
+                    <li class="tabs__item" value="active">Active</li>
+                    <li class="tabs__item" value="complited">Complited</li>
+                </ul>
+
+                <select name="select" class="select">
+                    <option value="asc">new</option>
+                    <option value="desc">old</option>
+                </select>
+
+
+                <input type="text" class="serach" placeholder="search...">
+            </div>
+
+            <div class="main__form">
+                <div class="form">
+                    <input type="text" class="input__task" placeholder="add new task...">
+                    <button type="button" class="add__task">+</button>
+                </div>
+            </div>
+
+
+            <div class="task__container">
+                <ul class="task__list">
+
+                    <!-- <li class="task__item">
+                        <span class="task-id">1</span>
+                        <span class="task__name">Make html template</span>
+                        <button type="button" class="delete">Trash</button>
+                        <input type="checkbox" class="checkbox" name="isChecked" id="checkbox">
+                    </li>
+                    
+                    <li class="task__item">
+                        <span class="task-id">1</span>
+                        <span class="task__name">Make html template</span>
+                        <button type="button" class="delete">Trash</button>
+                        <input type="checkbox" class="checkbox" name="isChecked" id="checkbox">
+                    </li>
+
+                    <li class="task__item">
+                        <span class="task-id">1</span>
+                        <span class="task__name">Make html template</span>
+                        <button type="button" class="delete">Trash</button>
+                        <input type="checkbox" class="checkbox" name="isChecked" id="checkbox">
+                    </li> -->
+                </ul>
+            </div>
+
+
+            <div class="pagination">
+                <ul class="pagination__bullets">
+                    <li class="bullet">1</li>
+                    <li class="bullet">1</li>
+                    <li class="bullet">1</li>
+                    <li class="bullet">1</li>
+                    <li class="bullet">1</li>
+                    <li class="bullet">1</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="wrapper">
+            <a class="maker" href="#">By Puzhaev</a>
+        </div>
+    </footer>
+
+    <script type="module" src="./js/modules/model.js"></script>
+    <script type="module" src="./js/modules/view.js"></script>
+    <script type="module" src="./js/modules/controller.js"></script>
+</body>
+</html>
