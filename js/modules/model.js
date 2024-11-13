@@ -23,10 +23,18 @@ function generateData(value){
     
 }
 
+function findItem(target){
+    return tasks.find(item => item.id === target);
+ }
+ 
+ function deleteItem(target){
+     tasks.splice(target, 1);
+     saveToLs();
+     return tasks;
+ }
 
 function saveToLs(){
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-
-export default {generateData, tasks};
+export default {generateData, tasks, findItem, deleteItem};

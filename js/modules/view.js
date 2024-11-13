@@ -5,6 +5,8 @@ const elements = {
     pagination: document.querySelector('.pagination__bullets'),
 }
 
+console.log(elements.taskItem);
+
 let taskCount = 7;
 let currentPage = 1;
 
@@ -16,11 +18,11 @@ function render(data, page = null){
         currentPage = page;
     }
 
+
+
     let startIndex = taskCount * currentPage - taskCount;
     let lastIndex = startIndex + taskCount;
     let taskToRender = data.slice(startIndex, lastIndex);
-
-    console.log(taskToRender);
 
     taskToRender.forEach(task => {
         elements.taskContainer.innerHTML += fillHTML(task);
@@ -45,21 +47,23 @@ function resetInput(){
 
 function renderPagination(tasks){
 
-    elements.pagination.innerHTML += '';
-
     const pageCount = Math.ceil(tasks.length / taskCount);
-    
-    console.log(pageCount);
+    const ceil = tasks.length / taskCount;
 
     for(let i = 1; i < pageCount; i++){
-        elements.pagination.innerHTML += renderBtn(i);
+        if(ceil !== pageCount){
+            let li = renderBtn(i);
+            elements.pagination.append(li);
+        }
     }
+
 }
 
 function renderBtn(count){
-    return `
-        <li class="bullet">${count}</li>
-    `
+    const li = document.createElement('li');
+    li.className = 'bullet';
+    li.textContent = count;
+    return li;
 }
 
 function updatePagination(data, target){
