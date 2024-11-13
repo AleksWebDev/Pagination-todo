@@ -2,11 +2,27 @@ const elements = {
     input: document.querySelector('.input__task'),
     buttonAdd: document.querySelector('.add__task'),
     taskContainer: document.querySelector('.task__list'),
+    pagination: document.querySelector('.pagination__bullets'),
 }
 
-function render(data){
+let taskCount = 7;
+let currentPage = 1;
+
+
+function render(data, page = null){
     elements.taskContainer.innerHTML = '';
-    data.forEach(task => {
+
+    if(page !== null){
+        currentPage = page;
+    }
+
+    let startIndex = taskCount * currentPage - taskCount;
+    let lastIndex = startIndex + taskCount;
+    let taskToRender = data.slice(startIndex, lastIndex);
+
+    console.log(taskToRender);
+
+    taskToRender.forEach(task => {
         elements.taskContainer.innerHTML += fillHTML(task);
     });
 
@@ -25,6 +41,34 @@ function fillHTML(task){
 
 function resetInput(){
     elements.input.value = '';
-}   
+} 
 
-export default {elements, resetInput, render};
+function renderPagination(tasks){
+
+    elements.pagination.innerHTML += '';
+
+    const pageCount = Math.ceil(tasks.length / taskCount);
+    
+    console.log(pageCount);
+
+    for(let i = 1; i < pageCount; i++){
+        elements.pagination.innerHTML += renderBtn(i);
+    }
+}
+
+function renderBtn(count){
+    return `
+        <li class="bullet">${count}</li>
+    `
+}
+
+function updatePagination(data, target){
+
+    currentPage = parseInt(target.textContent);
+    render(data, currentPage);
+
+}
+
+
+
+export default {elements, resetInput, render, renderPagination, updatePagination};

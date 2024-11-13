@@ -1,6 +1,5 @@
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-
 function generateData(value){
 
 
@@ -23,6 +22,7 @@ function generateData(value){
     saveToLs();
     
 }
+
 
 function saveToLs(){
     localStorage.setItem('tasks', JSON.stringify(tasks));

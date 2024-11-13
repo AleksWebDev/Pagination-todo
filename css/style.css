@@ -156,3 +156,7 @@ ul{
     border: 1px solid black;
     cursor: pointer;
 }
+
+.active__bullets{
+    background-color: red;
+}
