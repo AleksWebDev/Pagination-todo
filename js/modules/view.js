@@ -3,6 +3,7 @@ const elements = {
     buttonAdd: document.querySelector('.add__task'),
     taskContainer: document.querySelector('.task__list'),
     pagination: document.querySelector('.pagination__bullets'),
+    checkobx: document.querySelector('.checkbox'),
 }
 
 console.log(elements.taskItem);
@@ -18,7 +19,7 @@ function render(data, page = null){
         currentPage = page;
     }
 
-
+    
 
     let startIndex = taskCount * currentPage - taskCount;
     let lastIndex = startIndex + taskCount;
@@ -31,12 +32,14 @@ function render(data, page = null){
 }
 
 function fillHTML(task){
+
+
     return `
-        <li class="task__item" data-id="${task.id}">
+        <li class="task__item ${task.isChecked ? 'done' : ''}"  data-id="${task.id}">
                         <span class="task-id">${task.id}</span>
                         <span class="task__name">${task.name}</span>
                         <button type="button" class="delete">Trash</button>
-                        <input type="checkbox" class="checkbox" name="isChecked" id="checkbox">
+                        <input type="checkbox" ${task.isChecked ? 'checked' : ''} class="checkbox" name="isChecked" id="checkbox">
         </li>
     `
 }
@@ -48,13 +51,10 @@ function resetInput(){
 function renderPagination(tasks){
 
     const pageCount = Math.ceil(tasks.length / taskCount);
-    const ceil = tasks.length / taskCount;
 
-    for(let i = 1; i < pageCount; i++){
-        if(ceil !== pageCount){
-            let li = renderBtn(i);
-            elements.pagination.append(li);
-        }
+    for(let i = 1; i <= pageCount; i++){
+        let li = renderBtn(i);
+        elements.pagination.append(li);
     }
 
 }

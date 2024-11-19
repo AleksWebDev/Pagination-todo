@@ -10,7 +10,6 @@ view.elements.buttonAdd.addEventListener('click', function(){
     view.renderPagination(model.tasks);
 })
 
-
 window.addEventListener('DOMContentLoaded', function(){
     view.render(model.tasks);
     view.renderPagination(model.tasks);
@@ -31,5 +30,13 @@ view.elements.taskContainer.addEventListener('click', function(e){
         view.elements.pagination.innerHTML = '';
         view.renderPagination(model.tasks);
     }
+
+    if(e.target.classList.contains('checkbox')){
+        const id = parseInt(e.target.parentNode.dataset.id);
+        const parentElem = e.target.parentNode;
+        const checkedTasks = model.filterCheckbox(id, parentElem);
+        view.render(checkedTasks);
+    }
 })
+
 

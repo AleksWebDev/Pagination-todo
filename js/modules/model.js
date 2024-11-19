@@ -24,17 +24,32 @@ function generateData(value){
 }
 
 function findItem(target){
-    return tasks.find(item => item.id === target);
- }
+    return tasks.findIndex(item => item.id === target);
+}
  
- function deleteItem(target){
-     tasks.splice(target, 1);
-     saveToLs();
-     return tasks;
- }
+function deleteItem(target){
+    tasks.splice(target, 1);
+    saveToLs();
+
+    return tasks;
+}
+
+function filterCheckbox(id){
+    const targetId = tasks.findIndex(item => {
+        if(item.id === id){
+            return true;
+        }
+    })
+
+
+    tasks[targetId].isChecked = !tasks[targetId].isChecked;
+
+    saveToLs();
+    return tasks;
+}
 
 function saveToLs(){
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-export default {generateData, tasks, findItem, deleteItem};
+export default {generateData, tasks, findItem, deleteItem, filterCheckbox};
