@@ -4,22 +4,21 @@ const elements = {
     taskContainer: document.querySelector('.task__list'),
     pagination: document.querySelector('.pagination__bullets'),
     checkobx: document.querySelector('.checkbox'),
+    tabs: document.querySelector('.tabs'),
+    search: document.querySelector('.serach'),
 }
-
-console.log(elements.taskItem);
 
 let taskCount = 7;
 let currentPage = 1;
 
-
 function render(data, page = null){
     elements.taskContainer.innerHTML = '';
+
+    console.log(`data to render ${data}`);
 
     if(page !== null){
         currentPage = page;
     }
-
-    
 
     let startIndex = taskCount * currentPage - taskCount;
     let lastIndex = startIndex + taskCount;
@@ -67,10 +66,8 @@ function renderBtn(count){
 }
 
 function updatePagination(data, target){
-
     currentPage = parseInt(target.textContent);
     render(data, currentPage);
-
 }
 
 

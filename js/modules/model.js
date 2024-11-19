@@ -52,4 +52,29 @@ function saveToLs(){
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-export default {generateData, tasks, findItem, deleteItem, filterCheckbox};
+function filterTabs(target){
+
+    let modifiedTasks;
+
+    switch(target){
+        case 'all' :
+            return tasks;
+        case 'active' :
+            return modifiedTasks = tasks.filter(item => item.isChecked === false);
+        case 'complited' :
+            return modifiedTasks = tasks.filter(item => item.isChecked === true);
+        default:
+            modifiedTasks = tasks;
+    }
+
+    return modifiedTasks;
+}
+
+function search(target){
+
+    const searchFilteredTasks = tasks.filter(item => item.name.toLowerCase().includes(target.toLowerCase()));
+
+    return searchFilteredTasks;
+}
+
+export default {generateData, tasks, findItem, deleteItem, filterCheckbox, filterTabs, search};

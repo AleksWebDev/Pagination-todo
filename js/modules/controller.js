@@ -39,4 +39,21 @@ view.elements.taskContainer.addEventListener('click', function(e){
     }
 })
 
+view.elements.tabs.addEventListener('click', function(e){
+    if(e.target.classList.contains('tabs__item')){
+        const tabsFilter = e.target.dataset.value;
+        const filteredTasks = model.filterTabs(tabsFilter);
+        view.render(filteredTasks);
+        view.elements.pagination.innerHTML = '';
+        view.renderPagination(filteredTasks);
+    }
+})
+
+view.elements.search.addEventListener('input', function(e){
+    const target = e.target.value;
+    const searchedTasks = model.search(target);
+    view.render(searchedTasks);
+    view.elements.pagination.innerHTML = '';
+    view.renderPagination(filteredTasks);
+})
 
